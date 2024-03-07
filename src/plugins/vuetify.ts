@@ -24,6 +24,9 @@ export default createVuetify({
       density: 'compact',
       variant: 'outlined',
       hideDetails: true,
+    },
+    VTable: {
+      density: 'compact',
     }
   }
 })

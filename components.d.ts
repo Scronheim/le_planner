@@ -7,7 +7,12 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    AdditionalDefensesTab: typeof import('./src/components/planner/AdditionalDefensesTab.vue')['default']
+    AttributesCard: typeof import('./src/components/planner/AttributesCard.vue')['default']
     ClassIcon: typeof import('./src/components/icons/ClassIcon.vue')['default']
+    CommonTab: typeof import('./src/components/planner/CommonTab.vue')['default']
+    GeneralTab: typeof import('./src/components/planner/GeneralTab.vue')['default']
+    ResistancesTab: typeof import('./src/components/planner/ResistancesTab.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

@@ -68,7 +68,7 @@
               </v-tabs>
               <v-window v-model="tab">
                 <v-window-item value="general">
-                  general
+                  <GeneralTab />
                 </v-window-item>
                 <v-window-item value="offense">
                   offense
