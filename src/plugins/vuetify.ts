@@ -27,6 +27,10 @@ export default createVuetify({
     },
     VTable: {
       density: 'compact',
+    },
+    VBtn: {
+      density: 'compact',
+      variant: 'text'
     }
   }
 })

@@ -29,11 +29,7 @@
                       :key="subCl.name"
                       :title="subCl.name"
                       @click="setSelectedClass(subCl)"
-                    >
-                      <!-- <template #prepend> -->
-                      <!-- <ClassIcon :classId="subCl.id" /> -->
-                      <!-- </template> -->
-                    </v-list-item>
+                    />
                   </v-list-group>
                 </v-list>
               </v-menu>
@@ -76,7 +72,152 @@
               </v-window>
             </v-col>
             <v-col>
-              тут шмотки
+              <v-row>
+                <v-col cols="6">
+                  <v-card title="Снаряжение" color="grey-darken-3">
+                    <v-card-text>
+                      <v-row>
+                        <v-col />
+                        <v-col>
+                          <ItemSlot
+                            item-class="armour"
+                            item-type="helmets"
+                            :width="80"
+                            :height="80"
+                          />
+                        </v-col>
+                        <v-col>
+                          <ItemSlot
+                            item-class="accessories"
+                            item-type="amulets"
+                            :width="50"
+                            :height="50"
+                          />
+                        </v-col>
+                      </v-row>
+                      <v-row>
+                        <v-col>
+                          <ItemSlot
+                            item-class="weapons"
+                            item-type="weapon"
+                            :width="80"
+                            :height="154"
+                          />
+                        </v-col>
+                        <v-col>
+                          <ItemSlot
+                            item-class="armour"
+                            item-type="bodyArmor"
+                            :width="100"
+                            :height="150"
+                          />
+                        </v-col>
+                        <v-col>
+                          <ItemSlot
+                            item-class="offHands"
+                            item-type="quiver"
+                            :width="80"
+                            :height="154"
+                          />
+                        </v-col>
+                      </v-row>
+                      <v-row>
+                        <v-col>
+                          <ItemSlot
+                            item-class="accessories"
+                            item-type="rings"
+                            :width="50"
+                            :height="50"
+                          />
+                        </v-col>
+                        <v-col>
+                          <ItemSlot
+                            item-class="armour"
+                            item-type="belts"
+                            :width="100"
+                            :height="50"
+                          />
+                        </v-col>
+                        <v-col>
+                          <ItemSlot
+                            item-class="accessories"
+                            item-type="rings"
+                            :width="50"
+                            :height="50"
+                          />
+                        </v-col>
+                      </v-row>
+                      <v-row>
+                        <v-col>
+                          <ItemSlot
+                            item-class="armour"
+                            item-type="gloves"
+                            :width="80"
+                            :height="80"
+                          />
+                        </v-col>
+                        <v-col>
+                          <ItemSlot
+                            item-class="armour"
+                            item-type="boots"
+                            :width="80"
+                            :height="80"
+                          />
+                        </v-col>
+                        <v-col>
+                          <ItemSlot
+                            item-class="accessories"
+                            item-type="relics"
+                            :width="80"
+                            :height="80"
+                          />
+                        </v-col>
+                      </v-row>
+                    </v-card-text>
+                  </v-card>
+                </v-col>
+                <v-col>
+                  <v-card title="Идолы" color="grey-darken-3">
+                    <v-card-text>
+                      <v-row justify="center">
+                        <v-sheet width="50" height="50" />
+                        <ItemSlot :width="50" :height="50" />
+                        <ItemSlot :width="50" :height="50" />
+                        <ItemSlot :width="50" :height="50" />
+                        <v-sheet width="50" height="50" />
+                      </v-row>
+                      <v-row justify="center">
+                        <ItemSlot :width="50" :height="50" />
+                        <ItemSlot :width="50" :height="50" />
+                        <ItemSlot :width="50" :height="50" />
+                        <ItemSlot :width="50" :height="50" />
+                        <ItemSlot :width="50" :height="50" />
+                      </v-row>
+                      <v-row justify="center">
+                        <ItemSlot :width="50" :height="50" />
+                        <ItemSlot :width="50" :height="50" />
+                        <v-sheet width="50" height="50" />
+                        <ItemSlot :width="50" :height="50" />
+                        <ItemSlot :width="50" :height="50" />
+                      </v-row>
+                      <v-row justify="center">
+                        <ItemSlot :width="50" :height="50" />
+                        <ItemSlot :width="50" :height="50" />
+                        <ItemSlot :width="50" :height="50" />
+                        <ItemSlot :width="50" :height="50" />
+                        <ItemSlot :width="50" :height="50" />
+                      </v-row>
+                      <v-row justify="center">
+                        <v-sheet width="50" height="50" />
+                        <ItemSlot :width="50" :height="50" />
+                        <ItemSlot :width="50" :height="50" />
+                        <ItemSlot :width="50" :height="50" />
+                        <v-sheet width="50" height="50" />
+                      </v-row>
+                    </v-card-text>
+                  </v-card>
+                </v-col>
+              </v-row>
             </v-col>
           </v-row>
         </v-card-text>
@@ -97,9 +238,9 @@ export default {
   },
   data() {
     return {
-      tab: <string> 'general',
-      menuIsOpen: <boolean> false,
-      build: <Build> {
+      tab: <string>'general',
+      menuIsOpen: <boolean>false,
+      build: <Build>{
         selectedClass: {
           id: 11
         },

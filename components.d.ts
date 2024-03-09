@@ -12,6 +12,8 @@ declare module 'vue' {
     ClassIcon: typeof import('./src/components/icons/ClassIcon.vue')['default']
     CommonTab: typeof import('./src/components/planner/CommonTab.vue')['default']
     GeneralTab: typeof import('./src/components/planner/GeneralTab.vue')['default']
+    ItemsDialog: typeof import('./src/components/planner/ItemsDialog.vue')['default']
+    ItemSlot: typeof import('./src/components/planner/ItemSlot.vue')['default']
     ResistancesTab: typeof import('./src/components/planner/ResistancesTab.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
