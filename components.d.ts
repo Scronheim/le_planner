@@ -9,8 +9,11 @@ declare module 'vue' {
   export interface GlobalComponents {
     AdditionalDefensesTab: typeof import('./src/components/planner/AdditionalDefensesTab.vue')['default']
     AttributesCard: typeof import('./src/components/planner/AttributesCard.vue')['default']
+    BlessingIcon: typeof import('./src/components/icons/BlessingIcon.vue')['default']
+    BlessingsDialog: typeof import('./src/components/planner/BlessingsDialog.vue')['default']
     ClassIcon: typeof import('./src/components/icons/ClassIcon.vue')['default']
     CommonTab: typeof import('./src/components/planner/CommonTab.vue')['default']
+    copy: typeof import('./src/components/icons/ClassIcon copy.vue')['default']
     GeneralTab: typeof import('./src/components/planner/GeneralTab.vue')['default']
     ItemsDialog: typeof import('./src/components/planner/ItemsDialog.vue')['default']
     ItemSlot: typeof import('./src/components/planner/ItemSlot.vue')['default']

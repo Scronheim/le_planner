@@ -25,6 +25,16 @@ export default createVuetify({
       variant: 'outlined',
       hideDetails: true,
     },
+    VSelect: {
+      density: 'compact',
+      variant: 'outlined',
+      hideDetails: true,
+    },
+    VAutocomplete: {
+      density: 'compact',
+      variant: 'outlined',
+      hideDetails: true,
+    },
     VTable: {
       density: 'compact',
     },

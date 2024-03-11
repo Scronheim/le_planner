@@ -5,46 +5,6 @@
         <v-card-text>
           <v-row>
             <v-col>
-              <v-menu :close-on-content-click="false" v-model="menuIsOpen">
-                <template #activator="{ props }">
-                  <v-btn color="grey-darken-3" v-bind="props">
-                    {{ selectedSubClass }}
-                  </v-btn>
-                </template>
-                <v-list nav width="200">
-                  <v-list-group
-                    v-for="cl in appStore.classes"
-                    :key="cl.name"
-                    :value="cl.name"
-                  >
-                    <template #activator="{ props }">
-                      <v-list-item
-                        v-bind="props"
-                        :prepend-icon="cl.icon"
-                        :title="cl.name"
-                      />
-                    </template>
-                    <v-list-item
-                      v-for="subCl in cl.subClasses"
-                      :key="subCl.name"
-                      :title="subCl.name"
-                      @click="setSelectedClass(subCl)"
-                    />
-                  </v-list-group>
-                </v-list>
-              </v-menu>
-            </v-col>
-            <v-col>
-              <v-text-field
-                label="Уровень"
-                type="number"
-                v-model.number="build.level"
-              />
-            </v-col>
-            <v-col />
-          </v-row>
-          <v-row>
-            <v-col>
               <v-tabs v-model="tab">
                 <v-tab value="general">
                   Общее
@@ -72,6 +32,51 @@
               </v-window>
             </v-col>
             <v-col>
+              <v-row>
+                <v-col cols="2">
+                  <ClassIcon :game-class="build.selectedClass" />
+                </v-col>
+                <v-col>
+                  <v-menu :close-on-content-click="false" v-model="menuIsOpen">
+                    <template #activator="{ props }">
+                      <v-btn
+                        v-bind="props"
+                        variant="outlined"
+                      >
+                        {{ selectedSubClass }}
+                      </v-btn>
+                    </template>
+                    <v-list nav width="200">
+                      <v-list-group
+                        v-for="cl in appStore.classes"
+                        :key="cl.name"
+                        :value="cl.name"
+                      >
+                        <template #activator="{ props }">
+                          <v-list-item
+                            v-bind="props"
+                            :prepend-icon="cl.icon"
+                            :title="cl.name"
+                          />
+                        </template>
+                        <v-list-item
+                          v-for="subCl in cl.subClasses"
+                          :key="subCl.name"
+                          :title="subCl.name"
+                          @click="setSelectedClass(subCl)"
+                        />
+                      </v-list-group>
+                    </v-list>
+                  </v-menu>
+                </v-col>
+                <v-col>
+                  <v-text-field
+                    label="Уровень"
+                    type="number"
+                    v-model.number="build.level"
+                  />
+                </v-col>
+              </v-row>
               <v-row>
                 <v-col cols="6">
                   <v-card title="Снаряжение" color="grey-darken-3">
@@ -216,6 +221,102 @@
                       </v-row>
                     </v-card-text>
                   </v-card>
+                  <v-card
+                    class="mt-6"
+                    title="Благословения"
+                    color="grey-darken-3"
+                  >
+                    <v-card-text>
+                      <v-row>
+                        <v-col>
+                          <v-btn
+                            size="64"
+                            icon="mdi-plus"
+                            color="success"
+                            variant="outlined"
+                            @click="blessingsDialog = true"
+                          />
+                        </v-col>
+                        <v-col>
+                          <v-btn
+                            size="64"
+                            icon="mdi-plus"
+                            color="success"
+                            variant="outlined"
+                          />
+                        </v-col>
+                        <v-col>
+                          <v-btn
+                            size="64"
+                            icon="mdi-plus"
+                            color="success"
+                            variant="outlined"
+                          />
+                        </v-col>
+                      </v-row>
+                      <v-row>
+                        <v-col>
+                          <v-btn
+                            size="64"
+                            icon="mdi-plus"
+                            color="success"
+                            variant="outlined"
+                          />
+                        </v-col>
+                        <v-col>
+                          <v-btn
+                            size="64"
+                            icon="mdi-plus"
+                            color="success"
+                            variant="outlined"
+                          />
+                        </v-col>
+                        <v-col>
+                          <v-btn
+                            size="64"
+                            icon="mdi-plus"
+                            color="success"
+                            border="11"
+                            variant="outlined"
+                          />
+                        </v-col>
+                        <v-col>
+                          <v-btn
+                            size="64"
+                            icon="mdi-plus"
+                            color="success"
+                            variant="outlined"
+                          />
+                        </v-col>
+                      </v-row>
+                      <v-row>
+                        <v-col>
+                          <v-btn
+                            size="64"
+                            icon="mdi-plus"
+                            color="success"
+                            variant="outlined"
+                          />
+                        </v-col>
+                        <v-col>
+                          <v-btn
+                            size="64"
+                            icon="mdi-plus"
+                            color="success"
+                            variant="outlined"
+                          />
+                        </v-col>
+                        <v-col>
+                          <v-btn
+                            size="64"
+                            icon="mdi-plus"
+                            color="success"
+                            variant="outlined"
+                          />
+                        </v-col>
+                      </v-row>
+                    </v-card-text>
+                  </v-card>
                 </v-col>
               </v-row>
             </v-col>
@@ -224,6 +325,10 @@
       </v-card>
     </v-col>
   </v-row>
+
+  <v-dialog width="800" v-model="blessingsDialog">
+    <BlessingsDialog />
+  </v-dialog>
 </template>
 
 <script lang="ts">
@@ -240,6 +345,7 @@ export default {
     return {
       tab: <string>'general',
       menuIsOpen: <boolean>false,
+      blessingsDialog: <boolean>false,
       build: <Build>{
         selectedClass: {
           id: 11
