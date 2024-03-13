@@ -34,7 +34,7 @@
             <v-col>
               <v-row>
                 <v-col cols="2">
-                  <ClassIcon :game-class="build.selectedClass" />
+                  <ClassIcon :game-class="appStore.build.selectedClass" />
                 </v-col>
                 <v-col>
                   <v-menu :close-on-content-click="false" v-model="menuIsOpen">
@@ -73,7 +73,7 @@
                   <v-text-field
                     label="Уровень"
                     type="number"
-                    v-model.number="build.level"
+                    v-model.number="appStore.build.level"
                   />
                 </v-col>
               </v-row>
@@ -89,6 +89,7 @@
                             item-type="helmets"
                             :width="83"
                             :height="83"
+                            @add-item-to-build="addItemToBuild($event, 'helmet')"
                           />
                         </v-col>
                         <v-col>
@@ -97,6 +98,7 @@
                             item-type="amulets"
                             :width="72"
                             :height="74"
+                            @add-item-to-build="addItemToBuild($event, 'amulet')"
                           />
                         </v-col>
                       </v-row>
@@ -107,6 +109,7 @@
                             item-type="onehandedSwords"
                             :width="83"
                             :height="154"
+                            @add-item-to-build="addItemToBuild($event, 'weapon')"
                           />
                         </v-col>
                         <v-col>
@@ -115,6 +118,7 @@
                             item-type="bodyArmors"
                             :width="100"
                             :height="150"
+                            @add-item-to-build="addItemToBuild($event, 'bodyArmor')"
                           />
                         </v-col>
                         <v-col>
@@ -123,6 +127,7 @@
                             item-type="quivers"
                             :width="83"
                             :height="154"
+                            @add-item-to-build="addItemToBuild($event, 'offHand')"
                           />
                         </v-col>
                       </v-row>
@@ -133,6 +138,7 @@
                             item-type="rings"
                             :width="50"
                             :height="50"
+                            @add-item-to-build="addItemToBuild($event, 'ring1')"
                           />
                         </v-col>
                         <v-col>
@@ -141,6 +147,7 @@
                             item-type="belts"
                             :width="100"
                             :height="50"
+                            @add-item-to-build="addItemToBuild($event, 'belt')"
                           />
                         </v-col>
                         <v-col>
@@ -149,6 +156,7 @@
                             item-type="rings"
                             :width="50"
                             :height="50"
+                            @add-item-to-build="addItemToBuild($event, 'ring2')"
                           />
                         </v-col>
                       </v-row>
@@ -159,6 +167,7 @@
                             item-type="gloves"
                             :width="83"
                             :height="83"
+                            @add-item-to-build="addItemToBuild($event, 'gloves')"
                           />
                         </v-col>
                         <v-col>
@@ -167,6 +176,7 @@
                             item-type="boots"
                             :width="83"
                             :height="83"
+                            @add-item-to-build="addItemToBuild($event, 'boots')"
                           />
                         </v-col>
                         <v-col>
@@ -175,6 +185,7 @@
                             item-type="relics"
                             :width="83"
                             :height="83"
+                            @add-item-to-build="addItemToBuild($event, 'relic')"
                           />
                         </v-col>
                       </v-row>
@@ -333,7 +344,7 @@
 
 <script lang="ts">
 import { useAppStore } from '@/store/app'
-import { Build, GameClass } from '@/types/types'
+import { GameClass, Item } from '@/types/types'
 
 export default {
   setup() {
@@ -346,51 +357,20 @@ export default {
       tab: <string>'general',
       menuIsOpen: <boolean>false,
       blessingsDialog: <boolean>false,
-      build: <Build>{
-        selectedClass: {
-          id: 11
-        },
-        items: {
-          helmets: [],
-          amulets: [],
-          weapons: {
-            onehandedSwords: [],
-            onehandedAxes: [],
-            onehandedMaces: [],
-            daggers: [],
-            scepters: [],
-            wands: [],
-            twohandedSwords: [],
-            twohandedAxes: [],
-            twohandedMaces: [],
-            twohandedSpears: [],
-            twohandedStaffs: [],
-            bows: [],
-          },
-          bodyArmors: [],
-          quivers: [],
-          catalysts: [],
-          shields: [],
-          rings: [],
-          belts: [],
-          gloves: [],
-          boots: [],
-          relics: [],
-        },
-        blessings: [],
-        level: 100,
-      },
     }
   },
   computed: {
     selectedSubClass() {
       const subClasses = this.appStore.classes.flatMap(c => c.subClasses)
-      return subClasses.find(subCl => subCl.id === this.build.selectedClass.id)?.name
+      return subClasses.find(subCl => subCl.id === this.appStore.build.selectedClass.id)?.name
     },
   },
   methods: {
+    addItemToBuild(item: Item, itemSlot: string) {
+      this.appStore.build.slots[itemSlot] = item
+    },
     setSelectedClass(selectedClass: GameClass): void {
-      this.build.selectedClass = selectedClass
+      this.appStore.build.selectedClass = selectedClass
       this.menuIsOpen = false
     }
   }

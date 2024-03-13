@@ -7,7 +7,19 @@ export interface GameClass {
 
 export interface Build {
   selectedClass: Partial<GameClass>
-  items: Items
+  slots: {
+    helmet: Item | null
+    amulet: Item | null
+    weapon: Item | null
+    bodyArmor: Item | null
+    offHand: Item | null
+    ring1: Item | null
+    belt: Item | null
+    ring2: Item | null
+    gloves: Item | null
+    boots: Item | null
+    relic: Item | null
+  }
   blessings: Blessing[]
   level: number
 }

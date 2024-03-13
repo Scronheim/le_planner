@@ -1,6 +1,6 @@
 <template>
   <v-card
-    max-width="400"
+    min-width="400"
     elevation="10"
     color="grey-darken-4"
     v-on="clickable ? {click: setItem}: {}"
@@ -8,23 +8,33 @@
     <v-card-title>{{ item.name }}</v-card-title>
     <v-card-text>
       <v-row>
-        <v-col cols="4">
+        <v-col cols="3" align="center">
           <ItemIcon
             :item="item"
             :item-class="itemClass"
             :show-popup-card="false"
           />
         </v-col>
-        <v-col v-if="itemIsWeapon">
-          <p>Дистанция атаки: <span class="font-weight-bold">{{ item.range }}</span></p>
-          <p>Базовая скорость атаки: <span class="font-weight-bold">{{ item.baseAttackRate }}</span></p>
-        </v-col>
-      </v-row>
-      <v-row>
         <v-col>
+          <template v-if="itemIsWeapon">
+            <p>Дистанция атаки: <span class="font-weight-bold">{{ item.range }}</span></p>
+            <p>Базовая скорость атаки: <span class="font-weight-bold">{{ item.baseAttackRate }}</span></p>
+          </template>
           <v-list nav>
             <v-list-item v-for="impl in item.implicits" :key="impl.name">
               <v-list-item-title>+<span class="text-success font-weight-bold">{{ impl.from }}</span> {{ impl.name }}</v-list-item-title>
+              <v-divider />
+            </v-list-item>
+          </v-list>
+        </v-col>
+      </v-row>
+      <v-row v-if="item.modifiers?.length">
+        <v-col>
+          <p>Аффиксы</p>
+          <v-list nav>
+            <v-list-item v-for="mod in item.modifiers" :key="mod.name">
+              <v-list-item-title>+<span class="text-success font-weight-bold">{{ mod.from }}</span> {{ mod.name }}</v-list-item-title>
+              <v-divider />
             </v-list-item>
           </v-list>
         </v-col>

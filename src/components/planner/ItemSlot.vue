@@ -5,7 +5,6 @@
         v-bind="props"
         :width="width"
         :height="height"
-        :border="isHovering ? true: false"
         :class="[isHovering ? 'item-border': '']"
         @click="openItemsDialog"
       >
@@ -56,6 +55,7 @@ import { useAppStore } from '@/store/app'
 import { Item } from '@/types/types'
 
 export default {
+  emits: ['addItemToBuild'],
   props: {
     itemClass: {
       type: String,
@@ -89,6 +89,7 @@ export default {
   methods: {
     setItem(item: Item): void {
       this.selectedItem = item
+      this.$emit('addItemToBuild', item)
       this.itemDialog = false
     },
     openItemsDialog() {

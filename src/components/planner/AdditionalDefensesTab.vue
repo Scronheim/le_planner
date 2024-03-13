@@ -13,7 +13,7 @@
           </tr>
           <tr>
             <td>Броня</td>
-            <td>1</td>
+            <td>{{ armourFromItems }}</td>
           </tr>
           <tr>
             <td>Ослабление брони</td>
@@ -38,11 +38,21 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { useAppStore } from '@/store/app'
 
-export default defineComponent({
-  name: 'AdditionalDefensesTab'
-})
+export default {
+  setup() {
+    const appStore = useAppStore()
+
+    return { appStore }
+  },
+  computed: {
+    armourFromItems(): number {
+      const helmetArmour = this.appStore.build.slots.helmet?.implicits.filter(i => i.name === 'Броня').reduce((acc, curr) => acc + curr.from, 0)
+      return helmetArmour
+    }
+  }
+}
 </script>
 
 <style scoped>

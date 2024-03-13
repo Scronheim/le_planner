@@ -1,5 +1,5 @@
 // Utilities
-import { GameClass, Timeline, Items } from '@/types/types'
+import { GameClass, Timeline, Items, Build } from '@/types/types'
 import { defineStore } from 'pinia'
 
 export const useAppStore = defineStore('app', {
@@ -170,6 +170,26 @@ export const useAppStore = defineStore('app', {
       gloves: [],
       boots: [],
       relics: [],
+    },
+    build: <Build>{
+      selectedClass: {
+        id: 11
+      },
+      slots: {
+        helmet: null,
+        amulet: null,
+        weapon: null,
+        bodyArmor: null,
+        offHand: null,
+        ring1: null,
+        belt: null,
+        ring2: null,
+        gloves: null,
+        boots: null,
+        relic: null,
+      },
+      blessings: [],
+      level: 100,
     },
   }),
 })
