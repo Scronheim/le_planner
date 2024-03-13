@@ -38,6 +38,7 @@
 
 <script lang="ts">
 import { useAppStore } from '@/store/app'
+import { Timeline } from '@/types/types'
 
 export default {
   setup() {
@@ -48,8 +49,12 @@ export default {
   data() {
     return {
       empoweredTimeline: false,
-      selectedTimeline: {
+      selectedTimeline: <Timeline> {
+        id: 1,
         name: 'Fall of the Outcasts',
+        boss: '',
+        level: 58,
+        exclusiveRewards: [],
         blessings: {
           normal: [],
           empowered: [],

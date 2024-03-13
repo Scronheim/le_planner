@@ -87,8 +87,8 @@
                           <ItemSlot
                             item-class="armour"
                             item-type="helmets"
-                            :width="80"
-                            :height="80"
+                            :width="83"
+                            :height="83"
                           />
                         </v-col>
                         <v-col>
@@ -104,15 +104,15 @@
                         <v-col>
                           <ItemSlot
                             item-class="weapons"
-                            item-type="weapon"
-                            :width="80"
+                            item-type="onehandedSwords"
+                            :width="83"
                             :height="154"
                           />
                         </v-col>
                         <v-col>
                           <ItemSlot
                             item-class="armour"
-                            item-type="bodyArmor"
+                            item-type="bodyArmors"
                             :width="100"
                             :height="150"
                           />
@@ -120,8 +120,8 @@
                         <v-col>
                           <ItemSlot
                             item-class="offHands"
-                            item-type="quiver"
-                            :width="80"
+                            item-type="quivers"
+                            :width="83"
                             :height="154"
                           />
                         </v-col>
@@ -157,24 +157,24 @@
                           <ItemSlot
                             item-class="armour"
                             item-type="gloves"
-                            :width="80"
-                            :height="80"
+                            :width="83"
+                            :height="83"
                           />
                         </v-col>
                         <v-col>
                           <ItemSlot
                             item-class="armour"
                             item-type="boots"
-                            :width="80"
-                            :height="80"
+                            :width="83"
+                            :height="83"
                           />
                         </v-col>
                         <v-col>
                           <ItemSlot
                             item-class="accessories"
                             item-type="relics"
-                            :width="80"
-                            :height="80"
+                            :width="83"
+                            :height="83"
                           />
                         </v-col>
                       </v-row>
@@ -350,6 +350,34 @@ export default {
         selectedClass: {
           id: 11
         },
+        items: {
+          helmets: [],
+          amulets: [],
+          weapons: {
+            onehandedSwords: [],
+            onehandedAxes: [],
+            onehandedMaces: [],
+            daggers: [],
+            scepters: [],
+            wands: [],
+            twohandedSwords: [],
+            twohandedAxes: [],
+            twohandedMaces: [],
+            twohandedSpears: [],
+            twohandedStaffs: [],
+            bows: [],
+          },
+          bodyArmors: [],
+          quivers: [],
+          catalysts: [],
+          shields: [],
+          rings: [],
+          belts: [],
+          gloves: [],
+          boots: [],
+          relics: [],
+        },
+        blessings: [],
         level: 100,
       },
     }
@@ -370,7 +398,5 @@ export default {
 </script>
 
 <style scoped>
-/* .v-list-group__items .v-list-item {
-  padding-inline-start: 0 !important;
-} */
+
 </style>
