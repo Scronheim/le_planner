@@ -9,14 +9,15 @@
         v-bind="props"
         :width="itemSizes.width"
         :height="itemSizes.height"
-        cover
+        class="flex-0-0"
         style="background-image: url(/images/items_blessings.webp);"
-        :style="{ backgroundPosition: item.icon }"
+        :style="{backgroundPosition: item.icon, transform: scaleImage()}"
       />
     </template>
     <ItemCard
       v-if="showPopupCard"
       :item="item"
+      :item-class="itemClass"
       :clickable="false"
     />
   </v-menu>
@@ -59,12 +60,18 @@ export default {
   },
   computed: {
     itemSizes() {
-      console.log(this.itemClass, this.item.type)
-      
       return this.appStore.itemTypes[this.itemClass].find(t => t.value === this.item.type)?.size
     },
-    itemIsAmulet(): boolean {
-      return this.item.type === 'amulets'
+  },
+  methods: {
+    scaleImage(): string {
+      switch (this.item.type) {
+      case 'amulets':
+        return 'scale(0.45)'
+      
+      default:
+        return 'scale(1)'
+      }
     }
   },
 }

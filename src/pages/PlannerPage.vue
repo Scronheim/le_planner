@@ -95,8 +95,8 @@
                           <ItemSlot
                             item-class="accessories"
                             item-type="amulets"
-                            :width="50"
-                            :height="50"
+                            :width="72"
+                            :height="74"
                           />
                         </v-col>
                       </v-row>

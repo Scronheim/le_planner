@@ -9,12 +9,18 @@
         :class="[isHovering ? 'item-border': '']"
         @click="openItemsDialog"
       >
-        <ItemIcon
+        <v-row
           v-if="selectedItem"
-          :item="selectedItem"
-          :item-class="itemClass"
-          :is-hovering="isHovering"
-        />
+          class="fill-height"
+          align="center"
+          justify="center"
+        >
+          <ItemIcon
+            :item="selectedItem"
+            :item-class="itemClass"
+            :is-hovering="isHovering"
+          />
+        </v-row>
         <v-container v-else class="fill-height">
           <v-row
             align="center"
