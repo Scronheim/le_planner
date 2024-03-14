@@ -10,6 +10,7 @@
         :width="itemSizes.width"
         :height="itemSizes.height"
         class="flex-0-0"
+
         style="background-image: url(/images/items_blessings.webp);"
         :style="{backgroundPosition: item.icon, transform: scaleImage()}"
       />

@@ -59,6 +59,12 @@
         </v-col>
       </v-row>
     </v-card-text>
+    <v-card-actions>
+      <v-spacer />
+      <v-btn color="error" @click="removeSelectedItem">
+        Снять предмет
+      </v-btn>
+    </v-card-actions>
   </v-card>
 </template>
 
@@ -70,7 +76,7 @@ import { useAppStore } from '@/store/app'
 import { Item } from '@/types/types'
 
 export default {
-  emits: ['setItem'],
+  emits: ['setItem', 'removeSelectedItem'],
   props: {
     itemClass: {
       type: String,
@@ -79,6 +85,10 @@ export default {
     itemType: {
       type: String,
       default: 'helmets',
+    },
+    itemIsSelected: {
+      type: Boolean,
+      default: false,
     },
   },
   setup() {
@@ -98,6 +108,9 @@ export default {
     }
   },
   methods: {
+    removeSelectedItem(): void {
+      this.$emit('removeSelectedItem')
+    },
     setItem(item: Item): void {
       this.$emit('setItem', item)
     },

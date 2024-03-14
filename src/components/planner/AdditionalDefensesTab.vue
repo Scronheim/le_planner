@@ -48,8 +48,16 @@ export default {
   },
   computed: {
     armourFromItems(): number {
+      let result: number = 0
       const helmetArmour = this.appStore.build.slots.helmet?.implicits.filter(i => i.name === 'Броня').reduce((acc, curr) => acc + curr.from, 0)
-      return helmetArmour
+      if (helmetArmour) {
+        result += helmetArmour
+      }
+      const bodyArmour = this.appStore.build.slots.bodyArmor?.implicits.filter(i => i.name === 'Броня').reduce((acc, curr) => acc + curr.from, 0)
+      if (bodyArmour) {
+        result += bodyArmour
+      }
+      return result
     }
   }
 }

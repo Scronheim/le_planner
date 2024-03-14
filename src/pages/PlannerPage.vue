@@ -27,7 +27,10 @@
                   <GeneralTab />
                 </v-window-item>
                 <v-window-item value="offense">
-                  offense
+                  <OffenseTab />
+                </v-window-item>
+                <v-window-item value="defense">
+                  <DefenseTab />
                 </v-window-item>
               </v-window>
             </v-col>
@@ -90,6 +93,7 @@
                             :width="83"
                             :height="83"
                             @add-item-to-build="addItemToBuild($event, 'helmet')"
+                            @remove-item-from-build="removeItemFromBuild('helmet')"
                           />
                         </v-col>
                         <v-col>
@@ -99,6 +103,7 @@
                             :width="72"
                             :height="74"
                             @add-item-to-build="addItemToBuild($event, 'amulet')"
+                            @remove-item-from-build="removeItemFromBuild('amulet')"
                           />
                         </v-col>
                       </v-row>
@@ -110,6 +115,7 @@
                             :width="83"
                             :height="154"
                             @add-item-to-build="addItemToBuild($event, 'weapon')"
+                            @remove-item-from-build="removeItemFromBuild('weapon')"
                           />
                         </v-col>
                         <v-col>
@@ -119,6 +125,7 @@
                             :width="100"
                             :height="150"
                             @add-item-to-build="addItemToBuild($event, 'bodyArmor')"
+                            @remove-item-from-build="removeItemFromBuild('bodyArmor')"
                           />
                         </v-col>
                         <v-col>
@@ -128,6 +135,7 @@
                             :width="83"
                             :height="154"
                             @add-item-to-build="addItemToBuild($event, 'offHand')"
+                            @remove-item-from-build="removeItemFromBuild('offHand')"
                           />
                         </v-col>
                       </v-row>
@@ -139,6 +147,7 @@
                             :width="50"
                             :height="50"
                             @add-item-to-build="addItemToBuild($event, 'ring1')"
+                            @remove-item-from-build="removeItemFromBuild('ring1')"
                           />
                         </v-col>
                         <v-col>
@@ -148,6 +157,7 @@
                             :width="100"
                             :height="50"
                             @add-item-to-build="addItemToBuild($event, 'belt')"
+                            @remove-item-from-build="removeItemFromBuild('belt')"
                           />
                         </v-col>
                         <v-col>
@@ -157,6 +167,7 @@
                             :width="50"
                             :height="50"
                             @add-item-to-build="addItemToBuild($event, 'ring2')"
+                            @remove-item-from-build="removeItemFromBuild('ring2')"
                           />
                         </v-col>
                       </v-row>
@@ -168,6 +179,7 @@
                             :width="83"
                             :height="83"
                             @add-item-to-build="addItemToBuild($event, 'gloves')"
+                            @remove-item-from-build="removeItemFromBuild('gloves')"
                           />
                         </v-col>
                         <v-col>
@@ -177,6 +189,7 @@
                             :width="83"
                             :height="83"
                             @add-item-to-build="addItemToBuild($event, 'boots')"
+                            @remove-item-from-build="removeItemFromBuild('boots')"
                           />
                         </v-col>
                         <v-col>
@@ -186,6 +199,7 @@
                             :width="83"
                             :height="83"
                             @add-item-to-build="addItemToBuild($event, 'relic')"
+                            @remove-item-from-build="removeItemFromBuild('relic')"
                           />
                         </v-col>
                       </v-row>
@@ -366,6 +380,9 @@ export default {
     },
   },
   methods: {
+    removeItemFromBuild(itemSlot: string) {
+      this.appStore.build.slots[itemSlot] = null
+    },
     addItemToBuild(item: Item, itemSlot: string) {
       this.appStore.build.slots[itemSlot] = item
     },

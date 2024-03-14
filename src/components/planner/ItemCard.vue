@@ -3,12 +3,16 @@
     min-width="400"
     elevation="10"
     color="grey-darken-4"
+    border
     v-on="clickable ? {click: setItem}: {}"
   >
     <v-card-title>{{ item.name }}</v-card-title>
     <v-card-text>
       <v-row>
-        <v-col cols="3" align="center">
+        <v-col
+          cols="3"
+          align="center"
+        >
           <ItemIcon
             :item="item"
             :item-class="itemClass"

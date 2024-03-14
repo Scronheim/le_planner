@@ -44,7 +44,9 @@
     <ItemsDialog
       :item-class="itemClass"
       :item-type="itemType"
+      :item-is-selected="!!selectedItem"
       @set-item="setItem"
+      @remove-selected-item="removeSelectedItem"
     />
   </v-dialog>
 </template>
@@ -55,7 +57,7 @@ import { useAppStore } from '@/store/app'
 import { Item } from '@/types/types'
 
 export default {
-  emits: ['addItemToBuild'],
+  emits: ['addItemToBuild', 'removeItemFromBuild'],
   props: {
     itemClass: {
       type: String,
@@ -87,6 +89,11 @@ export default {
     }
   },
   methods: {
+    removeSelectedItem(): void {
+      this.selectedItem = null
+      this.$emit('removeItemFromBuild')
+      this.itemDialog = false
+    },
     setItem(item: Item): void {
       this.selectedItem = item
       this.$emit('addItemToBuild', item)

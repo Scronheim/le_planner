@@ -39,7 +39,6 @@ export default createVuetify({
       density: 'compact',
     },
     VBtn: {
-      density: 'compact',
       variant: 'text'
     }
   }

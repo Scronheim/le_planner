@@ -161,7 +161,15 @@ export const useAppStore = defineStore('app', {
         twohandedStaffs: [],
         bows: [],
       },
-      bodyArmors: [],
+      bodyArmors: [
+        { name: 'Adept Robes', type: 'bodyArmors', icon: '-1848px -627px', implicits: [
+          { name: 'Броня', from: 24 }, 
+          { name: 'Увеличение элементального урона', from: '6%', to: '18%' }
+        ], requiredLevel: 1, requiredClass: 2 },
+        { name: 'Hide Armor', type: 'bodyArmors', icon: '-1460px -1002px', implicits: [
+          { name: 'Броня', from: 20 } 
+        ], requiredLevel: 1, requiredClass: 1 }
+      ],
       quivers: [],
       catalysts: [],
       shields: [],
