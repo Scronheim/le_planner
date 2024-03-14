@@ -68,7 +68,7 @@ export default {
     scaleImage(): string {
       switch (this.item.type) {
       case 'amulets':
-        return 'scale(0.45)'
+        return 'scale(0.65)'
       
       default:
         return 'scale(1)'
